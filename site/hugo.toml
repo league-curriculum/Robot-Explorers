@@ -1,5 +1,5 @@
-baseURL = "/"
-title = "TBD"
+baseURL = "/Robot-Explorers/"
+title = "Robot Explorers"
 theme = "curriculum-hugo-theme"
 enableEmoji = true
 

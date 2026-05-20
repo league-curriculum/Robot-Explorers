@@ -10,7 +10,7 @@ set shell := ["bash", "-euo", "pipefail", "-c"]
 
 # Run the Hugo dev server with live reload
 dev:
-    hugo server --source site --buildDrafts --buildFuture
+    hugo server --source site --buildDrafts --buildFuture --baseURL http://localhost:1313/
 
 # Build the static site
 build:
