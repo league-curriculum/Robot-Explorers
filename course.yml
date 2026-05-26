@@ -8,5 +8,5 @@ topics: ["robotics", "engineering-design", "block-programming", "physical-comput
 prerequisites: []
 lessons: 48
 estimated_weeks: 8
-repo_url: https://github.com/league-infrastructure/Robot-Explorers
+repo_url: https://github.com/league-curriculum/Robot-Explorers.git
 description: A six-semester Edison robot curriculum for grades 2–4, progressing from barcode exploration through Card Coding, EdBlocks, and EdScratch. Built on an engineering design loop and physical embodied activities, with multiple entry points each semester.

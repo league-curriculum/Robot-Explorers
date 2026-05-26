@@ -1,0 +1,49 @@
+{{ define "main" }}
+<section class="session-header" data-jump="Overview">
+  <span class="eyebrow"><span>Robot Explorers</span><span class="pos">· Curriculum</span></span>
+  <h1 class="session-title">{{ .Site.Title }}</h1>
+  {{ with .Site.Params.description }}<p class="session-summary">{{ . }}</p>{{ end }}
+</section>
+
+{{ if .Content }}
+<section class="section-block" data-jump="Overview">
+  {{ .Content }}
+</section>
+{{ end }}
+
+{{ range $grade := slice 2 3 4 }}
+<section class="section-block grade-block" data-jump="Grade {{ $grade }}">
+  <div class="section-head">
+    <h2>Grade {{ $grade }}</h2>
+  </div>
+  <div class="content grade-body">
+    {{ range $sem := slice 1 2 }}
+      {{ $path := printf "/grade-%d-s%d" $grade $sem }}
+      {{ with site.GetPage $path }}
+      {{ $parts := split .Title "—" }}
+      {{ $name := "" }}
+      {{ if gt (len $parts) 1 }}{{ $name = trim (index $parts 1) " " }}{{ end }}
+      <h3><a href="{{ .RelPermalink }}">Semester {{ $sem }}{{ with $name }} — {{ . }}{{ end }}</a></h3>
+      {{ $stripped := replaceRE "(?s)<h1[^>]*>.*?</h1>" "" (string .Content) }}
+      {{ $stripped | safeHTML }}
+      {{ with .Pages }}
+      <ul class="lesson-blurbs">
+        {{ range . }}
+        <li>
+          <a href="{{ .RelPermalink }}" class="lesson-link">{{ .Title }}</a>
+          {{ $desc := .Description }}
+          {{ if eq $desc "" }}
+            {{ $first := index (split (printf "%s" .Summary) "</p>") 0 }}
+            {{ $desc = replaceRE `^.*?<p[^>]*>` "" $first }}
+          {{ end }}
+          {{ with $desc }}<div class="lesson-blurb">{{ . | safeHTML }}</div>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

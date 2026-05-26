@@ -1,6 +1,6 @@
-baseURL = "/Robot-Explorers/"
+baseURL = "https://league-curriculum.github.io/Robot-Explorers/"
 title = "Robot Explorers"
-theme = "curriculum-hugo-theme"
+theme = "hugo-theme-voidmain"
 enableEmoji = true
 
 # Mount course.yml as Hugo data so templates can read it
